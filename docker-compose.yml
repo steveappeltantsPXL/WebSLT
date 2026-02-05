@@ -1,0 +1,28 @@
+services:
+  webslt:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: webslt-backend
+    ports:
+      - "8080:8080"
+    networks:
+      - webslt-network
+    restart: unless-stopped
+
+  webslt-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: webslt-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - webslt
+    networks:
+      - webslt-network
+    restart: unless-stopped
+
+networks:
+  webslt-network:
+    driver: bridge

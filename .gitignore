@@ -1,0 +1,25 @@
+*.iml
+.kotlin
+.gradle
+# Claude Code personal/temp files (rules and CLAUDE.md ARE tracked)
+.claude/settings*
+.claude/plans/
+**/build/
+xcuserdata
+!src/**/build/
+local.properties
+.idea
+.DS_Store
+captures
+.externalNativeBuild
+.cxx
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
+node_modules/
+
+# Folders
+build/
