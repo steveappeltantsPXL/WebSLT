@@ -1,25 +1,35 @@
-*.iml
-.kotlin
-.gradle
-# Claude Code personal/temp files (rules and CLAUDE.md ARE tracked)
-.claude/settings*
-.claude/plans/
+# Gradle
+.gradle/
 **/build/
-xcuserdata
 !src/**/build/
 local.properties
-.idea
-.DS_Store
-captures
-.externalNativeBuild
-.cxx
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
-!*.xcodeproj/xcshareddata/
-!*.xcodeproj/project.xcworkspace/
-!*.xcworkspace/contents.xcworkspacedata
-**/xcshareddata/WorkspaceSettings.xcsettings
+
+# Kotlin
+.kotlin/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Node.js
 node_modules/
 
-# Folders
-build/
+# Vite build output
+dist/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Claude Code local settings
+CLAUDE.local.md
+.claude/
+docs/
