@@ -43,6 +43,32 @@
 - Frontend deps in `webApp/package.json`
 - Root `package.json` uses npm workspaces
 
+## Verification Before Providing Code
+
+**For AI agents**: Follow systematic verification to ensure code quality.
+
+### Pre-Implementation
+1. **Read relevant existing files** to understand patterns
+2. **Verify dependencies** are available in `libs.versions.toml`
+3. **Check imports** match actual package names
+4. **Follow patterns** from existing code (DI, async, error handling)
+
+### Post-Implementation
+1. **Read back files created** to verify syntax
+2. **Check build config** has all dependencies referenced
+3. **Provide test command**: `./gradlew build`
+4. **Provide run command**: `./gradlew server:run`
+5. **Provide verification curl**: test endpoint with curl
+
+### Never Provide Code That
+- References non-existent dependencies
+- Uses incorrect imports
+- Breaks existing patterns
+- Lacks proper error handling
+- Won't compile on first try
+
+See [`docs/Agent-Verification-Guide.md`](/docs/Agent-Verification-Guide.md) for complete checklist.
+
 ## Pre-Commit Checklist
 
 - `./gradlew build` passes

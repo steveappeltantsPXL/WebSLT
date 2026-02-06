@@ -40,9 +40,11 @@ GET    /api/v1/analytics/dashboard        # Admin stats
 
 ## Response Format
 
-All responses wrapped in ApiResponse:
+All responses are wrapped in ApiResponse:
 ```json
-{ "success": true, "data": { ... }, "error": null }
+{ "success": true, "data": { }, "error": null }
+```
+```json
 { "success": false, "data": null, "error": "Validation failed" }
 ```
 
@@ -80,8 +82,9 @@ All responses wrapped in ApiResponse:
 ## Status
 
 - [x] GET / returns greeting (placeholder)
-- [ ] API versioning (/api/v1/ prefix)
-- [ ] ApiResponse<T> wrapper
+- [x] API versioning (/api/v1/ prefix)
+- [x] ApiResponse<T> wrapper
+- [x] GET /api/v1/health endpoint
 - [ ] Request/Response DTO classes
 - [ ] Auth endpoints (register, login, refresh, logout)
 - [ ] User endpoints

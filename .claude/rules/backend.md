@@ -53,6 +53,26 @@ When implementing features, these must be added to `gradle/libs.versions.toml`:
 - `exposed-core`, `exposed-dao`, `exposed-jdbc` (ORM)
 - `postgresql` + `HikariCP` (database)
 
+## Agent Verification Checklist
+
+**For AI agents**: Systematic verification before providing code.
+
+### Before Writing Code
+- [ ] Read existing similar files (routes, services, repositories)
+- [ ] Verify dependency availability in `libs.versions.toml`
+- [ ] Understand current DI registration pattern (`KoinModule.kt`)
+- [ ] Review `Application.kt` to see plugin order and route registration
+
+### After Writing Code
+- [ ] Read files back to verify syntax
+- [ ] Check all imports are valid
+- [ ] Verify `build.gradle.kts` has needed dependencies
+- [ ] Check `application.conf` has any new config values
+- [ ] Provide compilation test: `./gradlew build`
+- [ ] Provide runtime test: curl commands for endpoints
+
+See [`docs/Agent-Verification-Guide.md`](/docs/Agent-Verification-Guide.md) for complete guide.
+
 ## Don'ts
 
 - No ML inference on server (browser-only)
@@ -66,12 +86,18 @@ When implementing features, these must be added to `gradle/libs.versions.toml`:
 - [x] Application.kt with embedded Netty server
 - [x] Basic GET / route
 - [x] Ktor test host configured
-- [ ] kotlinx-serialization + content negotiation
-- [ ] CORS plugin
-- [ ] StatusPages error handling
-- [ ] Koin DI setup
-- [ ] application.conf
-- [ ] Route structure (auth, users, training-data, models, analytics)
-- [ ] Service layer interfaces + implementations
-- [ ] Repository layer with Exposed
-- [ ] JWT authentication plugin
+- [x] kotlinx-serialization + content negotiation
+- [x] CORS plugin
+- [x] StatusPages error handling
+- [x] application.conf
+- [x] ApiResponse<T> wrapper
+- [x] GET /api/v1/health health check endpoint
+- [x] Koin DI setup
+- [x] PostgreSQL + HikariCP + Exposed
+- [x] Flyway migrations (V1__create_users_table.sql)
+- [x] User domain model + UserSettings
+- [x] UserRepository interface + UserRepositoryImpl
+- [x] Auth DTOs (RegisterRequest, LoginRequest, AuthResponse)
+- [x] AuthService interface + AuthServiceImpl
+- [x] JWT authentication plugin
+- [x] Auth routes (register, login, refresh, logout)

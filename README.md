@@ -1,15 +1,92 @@
-This is a Kotlin Multiplatform project targeting Web, Server.
+# WebSLT - Backend Repository
 
-* [/server](./server/src/main/kotlin) is for the Ktor server application.
+This is the **backend** component of WebSLT, a sign language translation platform.
 
-* [/shared](./shared/src) is for the code that will be shared between all targets in the project.
-  The most important subfolder is [commonMain](./shared/src/commonMain/kotlin). If preferred, you
-  can add code to the platform-specific folders here too.
+## Architecture
 
-* [/webApp](./webApp) contains web React application. It uses the Kotlin/JS library produced
-  by the [shared](./shared) module.
+This is a Kotlin Multiplatform project with the following structure:
 
-### Build and Run Server
+* **[/server](./server/src/main/kotlin)** - Ktor backend server (Kotlin, port 8080)
+  - REST API endpoints for authentication, training data, and model serving
+  - Database integration (PostgreSQL + Exposed)
+  - JWT authentication
+
+* **[/shared](./shared/src)** - Kotlin Multiplatform (JVM + JS targets)
+  - Code shared between server and frontend
+  - Platform detection, constants, validation logic
+  - Compiles to TypeScript definitions for frontend use
+
+* **[/webApp](./webApp)** - Minimal demo React application (for backend testing only)
+  - Uses the Kotlin/JS shared library
+  - Not the real frontend - see **WebSLT-Frontend** repository below
+
+---
+
+## Quick Start
+
+### Prerequisites
+- **JDK 11+**: `java -version`
+- **PostgreSQL**: Docker recommended
+
+### 1. Start Database
+```bash
+docker run --name webslt-postgres \
+  -e POSTGRES_DB=webslt \
+  -e POSTGRES_PASSWORD=password \
+  -p 5432:5432 \
+  -d postgres:15
+```
+
+### 2. Build & Run (remove build artifacts first manualy if needed)
+```bash
+./gradlew clean build
+./gradlew server:run
+```
+
+### 3. Verify
+```bash
+curl http://localhost:8080/api/v1/health
+```
+
+Expected response:
+```json
+{
+  "success": true,
+  "data": {
+    "status": "ok",
+    "timestamp": 1707140400000
+  },
+  "error": null
+}
+```
+
+✅ Server is running!
+
+### 4. Test Authentication
+```bash
+# Register user
+curl -X POST http://localhost:8080/api/v1/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"email":"test@example.com","password":"testpass123"}'
+```
+
+📖 **For more details**: See [docs/Running-Guide.md](./docs/Running-Guide.md)
+
+---
+
+## Documentation
+
+- **[Running Guide](./docs/Running-Guide.md)** - How to build and run the server
+- **[Testing Guide](./docs/Testing-Guide.md)** - API endpoint testing with curl
+- **[Troubleshooting Guide](./docs/Troubleshooting.md)** - Common issues and solutions
+- **[Agent Verification Guide](./docs/Agent-Verification-Guide.md)** - For AI agents
+- **[Architecture](./docs/Architecture.md)** - System design and patterns
+- **[Coding Rules](./docs/Coding-Rules.md)** - Kotlin + TypeScript conventions
+- **[Testing Rules](./docs/Testing-Rules.md)** - Testing strategy
+
+---
+
+### Build and Run Server (Detailed)
 
 To build and run the development version of the server, use the run configuration from the run widget
 in your IDE’s toolbar or run it directly from the terminal:
@@ -23,10 +100,22 @@ in your IDE’s toolbar or run it directly from the terminal:
   .\gradlew.bat :server:run
   ```
 
-### Build and Run Web Application
+### Frontend (Separate Repository)
 
-To build and run the development version of the web app, use the run configuration from the run widget
-in your IDE’s toolbar or run it directly from the terminal:
+The real frontend is in a **separate repository**: **WebSLT-Frontend**
+
+It contains:
+- React 18 + TypeScript + Vite setup
+- Camera capture with MediaPipe hand detection
+- TensorFlow.js gesture classification (all in-browser)
+- Translation UI with real-time inference
+- Backend API integration
+
+Location: Sibling directory `../WebSLT-Frontend/`
+
+### Build and Run Demo webApp (Backend Testing Only)
+
+To build and run the minimal demo web app for backend testing:
 
 1. Install [Node.js](https://nodejs.org/en/download) (which includes `npm`)
 
@@ -39,7 +128,7 @@ in your IDE’s toolbar or run it directly from the terminal:
       ```shell
       .\gradlew.bat :shared:jsBrowserDevelopmentLibraryDistribution
       ```
-3. Build and run the web application
+3. Build and run the demo application
     ## 📦 Installation
 
       ```shell

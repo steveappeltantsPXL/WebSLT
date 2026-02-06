@@ -1,7 +1,24 @@
 ---
-globs: webApp/**
+globs: webApp/** (DEPRECATED - see WebSLT-Frontend repository)
 ---
-# Frontend Rules (React + TypeScript)
+# Frontend Rules (React + TypeScript) - DEPRECATED
+
+**NOTE**: These rules are deprecated. The frontend has been moved to a separate repository: `WebSLT-Frontend`.
+
+This minimal webApp/ directory remains for backend testing/integration or purposes only.  
+(maybe in the future we'll use it for a demo or a dashboard app for the backend)
+
+---
+
+# WebSLT-Frontend (Separate Repository)
+
+All real frontend development happens in the sister repository at `../WebSLT-Frontend/`.
+
+Refer to that project's `CLAUDE.md` and `webApp/` directory structure for actual frontend conventions.
+
+---
+
+# Archived Rules (for reference only)
 
 ## Current Setup
 

@@ -1,0 +1,24 @@
+name: Code of Conduct Report
+description: Report a Code of Conduct violation
+title: "[CoC Report]: "
+labels: ["code-of-conduct"]
+assignees: ["your-username"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting. Please provide as much detail as possible.
+        Note: This report will be visible publicly unless you prefer
+        to email us at 123456+username@users.noreply.github.com.
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the incident
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Links, screenshots, or any other relevant information

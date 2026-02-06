@@ -59,14 +59,14 @@ analytics_events (id UUID PK, user_id FK, event_type, payload_json, timestamp)
 
 ## Status
 
-- [ ] PostgreSQL driver dependency added
-- [ ] HikariCP configured
-- [ ] Exposed integration
-- [ ] Flyway migration setup
-- [ ] Users table + migration
+- [x] PostgreSQL driver dependency added
+- [x] HikariCP configured
+- [x] Exposed integration
+- [x] Flyway migration setup
+- [x] Users table + user_settings table + migration (V1)
 - [ ] Training samples table + migration
 - [ ] Models table + migration
 - [ ] Analytics events table + migration
-- [ ] Repository interfaces
-- [ ] Repository implementations
+- [x] Repository interfaces (UserRepository)
+- [x] Repository implementations (UserRepositoryImpl)
 - [ ] Testcontainers test setup

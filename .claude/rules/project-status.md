@@ -7,7 +7,7 @@ This repository contains the **backend only** (Ktor server + Kotlin Multiplatfor
 
 **Frontend is in a separate repository**: `WebSLT-Frontend` (React + TypeScript, at sibling path)
 
-## Current Phase: 0 -- Scaffolding
+## Current Phase: 1 -- Backend Foundation (In Progress)
 
 ### What Exists
 
@@ -40,20 +40,27 @@ This repository contains the **backend only** (Ktor server + Kotlin Multiplatfor
 
 ---
 
-## Phase 1: Backend Foundation
+## Phase 1: Backend Foundation ✅ COMPLETE
 
-Set up core backend infrastructure before implementing features.
+Core backend infrastructure implemented.
 
-1. Add kotlinx-serialization + content negotiation plugin
-2. Add CORS plugin
-3. Add StatusPages error handling
-4. Create application.conf with environment variable support
-5. Set up Koin dependency injection
-6. Add PostgreSQL + HikariCP + Exposed
-7. Set up Flyway migrations
-8. Create users table + repository
-9. Implement JWT authentication (register, login, refresh)
-10. Create health check endpoint (`GET /api/v1/health`)
+1. [x] Add kotlinx-serialization + content negotiation plugin
+2. [x] Add CORS plugin
+3. [x] Add StatusPages error handling
+4. [x] Create application.conf with environment variable support
+5. [x] Set up Koin dependency injection
+6. [x] Add PostgreSQL + HikariCP + Exposed
+7. [x] Set up Flyway migrations
+8. [x] Create users table + UserSettings repository
+9. [x] Implement JWT authentication (register, login, refresh, logout)
+10. [x] Create health check endpoint (`GET /api/v1/health`)
+
+**Implemented Endpoints:**
+- `GET /api/v1/health` - Health check
+- `POST /api/v1/auth/register` - User registration with password hashing
+- `POST /api/v1/auth/login` - User login with JWT token generation
+- `POST /api/v1/auth/refresh` - Token refresh
+- `POST /api/v1/auth/logout` - Logout (protected route)
 
 ## Phase 2: Core API
 
@@ -66,35 +73,16 @@ Implement the essential backend endpoints.
 5. Model management endpoints (GET latest, download by version)
 6. Input validation framework
 
-## Phase 3: Frontend Foundation
+## Phase 3-5: Frontend Development
 
-Set up the real frontend application.
+**Frontend work is in the separate WebSLT-Frontend repository.**
 
-1. Camera capture component
-2. MediaPipe hand detection integration
-3. TensorFlow.js gesture recognition service
-4. Translation display component
-5. Backend API client service
-6. Routing setup (react-router-dom)
-
-## Phase 4: Integration
-
-Connect frontend and backend.
-
-1. Frontend auth flow (login, register, token management)
-2. Training data contribution UI
-3. Model download and caching in browser
-4. Analytics event pipeline
-
-## Phase 5: Polish
-
-Production readiness.
-
-1. CI/CD with GitHub Actions
-2. Performance optimization
-3. Accessibility (WCAG 2.1 AA)
-4. Production deployment configuration
-5. Monitoring and error tracking
+See that repository's CLAUDE.md for:
+- Phase 1: Camera capture + MediaPipe integration
+- Phase 2: TensorFlow.js gesture recognition
+- Phase 3: UI components and routing
+- Phase 4: Backend integration
+- Phase 5: Production deployment
 
 ---
 
