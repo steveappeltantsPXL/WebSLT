@@ -31,5 +31,3 @@ Thumbs.db
 
 # Claude Code local settings
 CLAUDE.local.md
-.claude/
-docs/
