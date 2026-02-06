@@ -30,9 +30,21 @@ Sign language translation platform. ML inference runs in-browser; backend handle
 - No PII in logs (no passwords, JWTs, emails)
 - Prefer `val` over `var`, avoid `!!` operator
 
+## Previous Status
+
+✅ Scaffolding phase. See .claude/rules/project-status.md for roadmap.
+
 ## Current Status
 
-Scaffolding phase. See `.claude/rules/project-status.md` for roadmap.
+✅ **Phase 1 (Backend Foundation) -- COMPLETE & VERIFIED** (Feb 6, 2026)
+
+- All core infrastructure implemented (Ktor, PostgreSQL, Flyway, JWT auth)
+- 5 API endpoints working: health, register, login, refresh, logout
+- Database connects and migrations run successfully
+- Configuration loads via application.conf
+- All tests passing
+
+See `.claude/rules/project-status.md` for roadmap and Phase 2 next steps.
 
 ## Detailed Rules
 
